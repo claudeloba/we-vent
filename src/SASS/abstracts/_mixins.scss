@@ -151,7 +151,6 @@ $color-primary: rgba(254, 245, 245, 1);
 @mixin twitch-effect {
   position: relative;
   cursor: pointer;
-
   &:before {
     content: "";
     height: 100%;
@@ -174,7 +173,9 @@ $color-primary: rgba(254, 245, 245, 1);
     transition: background-position 0.5s ease-in-out, transform 0.5s ease-in-out;
   }
 
-  &:hover:before {
+  &:hover:before,
+  &:active:before,
+  &:focus:before {
     background-position: 100% 100%;
     transform: scale(1.08, 1.03);
   }
