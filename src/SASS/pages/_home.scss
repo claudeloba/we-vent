@@ -43,11 +43,9 @@ header {
       @extend %logo;
     }
 
-    .hamburger {
-      @include a.for-desktop-up {
-        display: none;
-      }
-    }
+    // .hamburger {
+
+    // }
 
     &__ul {
       gap: 5%;
@@ -74,12 +72,6 @@ header {
       @include a.for-desktop-up {
         @include a.flex-row(space-evenly);
       }
-    }
-
-    &__logo {
-    }
-    .hamburger {
-      width: 50px;
     }
   }
 }

@@ -1,0 +1,84 @@
+@use "../abstracts/" as a;
+body {
+  position: relative;
+}
+
+.drop-down-menu {
+  input[type="checkbox"] {
+    display: none;
+    &:checked + .dropdown-content {
+      display: block;
+      animation: fadeIn 0.1s ease-in-out;
+    }
+    &:checked ~ .hamburger {
+      transform: rotate(90deg);
+    }
+  }
+
+  .hamburger {
+    cursor: pointer;
+    width: 50px;
+    transition: transform 0.3s ease-in-out;
+
+    @include a.for-desktop-up {
+      display: none;
+    }
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+
+  label {
+    @include a.text-style-paragraph;
+  }
+  .dropdown-content {
+    display: none;
+    transition: opacity 1s ease-in-out;
+  }
+  &__ul {
+    display: flex;
+    flex-flow: column wrap;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    background-color: var(--primary);
+    border: 0.1rem solid var(--black);
+    border-radius: 0 0 2rem 2rem;
+    box-shadow: 0 1rem 2rem rgba(var(--black), 0.2);
+    z-index: 10;
+    transform: translateY(-2rem);
+    transition: all 0.2s;
+    overflow: hidden;
+
+    li {
+      display: block;
+      &:not(:last-child) {
+        border-bottom: 0.1rem solid var(--black);
+      }
+      &:hover {
+        background-color: var(--white);
+        a {
+          color: var(--black);
+        }
+      }
+    }
+
+    a {
+      padding: 1rem 2rem;
+
+      display: block;
+      @include a.text-style-paragraph;
+      color: var(--fifth);
+    }
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
