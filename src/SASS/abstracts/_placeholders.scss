@@ -1,0 +1,16 @@
+@use "./mixins" as a;
+
+%logo {
+  @include a.text-style-paragraph-lg;
+  -webkit-background-clip: text !important;
+  -webkit-text-fill-color: transparent;
+  background: linear-gradient(
+    -200deg,
+    var(--tertiary) 0%,
+    var(--fourth) 50%,
+    var(--fifth) 100%
+  );
+  background-clip: text;
+  letter-spacing: 5px;
+  text-fill-color: transparent;
+}

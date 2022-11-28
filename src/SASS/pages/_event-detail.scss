@@ -1,0 +1,111 @@
+@use "../abstracts/" as a;
+.e-text {
+  --top-m: 1.5rem;
+  margin-top: 15rem;
+  padding-inline: 2rem;
+  max-width: 1200px;
+  margin-inline: auto;
+  color: var(--fifth);
+
+  &__subheading {
+    @include a.text-style-subheading;
+    margin-top: var(--top-m);
+  }
+  &__heading {
+    @include a.hollow-text(0.2rem, var(--black));
+    margin: calc(var(--top-m) * 2) 0;
+  }
+  &__details {
+    @include a.text-style-paragraph-sm;
+    margin-top: var(--top-m);
+
+    &--imp {
+      @include a.text-style-paragraph-lg;
+      font-weight: 700;
+    }
+  }
+}
+
+.e-highlight {
+  margin-top: 4rem;
+  width: min(100% - 4rem, 1200px);
+  height: fit-content;
+  margin-inline: auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(3, 1fr);
+  gap: 1rem;
+  @include a.for-desktop-up {
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: repeat(2, 1fr);
+  }
+  .small,
+  .large {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 2rem;
+  }
+  .large {
+    @include a.for-desktop-up {
+      grid-row: 1/3;
+      grid-column: 2/3;
+    }
+  }
+
+  .read-more {
+    height: 100%;
+    display: flex;
+    flex-flow: column wrap;
+
+    &__btn {
+      box-shadow: (0 1px 1px rgba(black, 0.1));
+      background: linear-gradient(
+        130deg,
+        transparent 0% 33%,
+        #5048cd 66%,
+        #e4309dba 83.5%,
+        #ff8c00 100%
+      );
+
+      border-radius: 2rem;
+      padding: 2rem;
+      &--info {
+        cursor: pointer;
+        @include a.flex-row(space-between);
+        align-items: center;
+        h2 {
+          @include a.hollow-text(0.2rem, var(--black));
+          margin: 0;
+        }
+      }
+      #checkbox:checked + .read-more__btn--info .fa-solid {
+        transform: rotate(180deg);
+      }
+      .fa-solid {
+        transition: transform 0.3s ease-in-out;
+      }
+      &--hidden {
+        margin-top: 1rem;
+        @include a.text-style-paragraph-sm;
+        min-height: 100%;
+        border-radius: 2rem;
+      }
+
+      #checkbox:checked ~ p,
+      #checkbox {
+        display: none;
+      }
+
+      label {
+        @include a.text-style-paragraph-sm;
+      }
+      input:checked {
+        .read-more__btn--hidden {
+          display: none;
+        }
+      }
+    }
+  }
+}

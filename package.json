@@ -1,0 +1,14 @@
+{
+  "name": "we-vent-individuell-uppgift-claude-loba",
+  "version": "1.0.0",
+  "description": "Project for first HTML & CSS course",
+  "main": "index.html",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "scss"
+  ],
+  "author": "Claude-Marcel Loba",
+  "license": "Apache-2.0"
+}
