@@ -100,6 +100,8 @@ header {
     align-content: center;
   }
   &__text {
+    backface-visibility: hidden;
+
     z-index: 1;
     @include a.for-tablet-up {
       grid-column: 1/3;
@@ -118,15 +120,27 @@ header {
       @include a.text-style-subheading-lg;
       margin-top: var(--margin-top);
       max-width: 80%;
+      backface-visibility: hidden;
+      animation: moveInRight 2s;
+      animation-timing-function: 1s ease;
       @include a.for-desktop-up {
         max-width: 100%;
       }
     }
+    &__svg {
+      animation: moveIn 2s;
+      animation-timing-function: 1s ease;
+      backface-visibility: hidden;
+    }
     &__heading {
+      backface-visibility: hidden;
+
       margin-top: var(--margin-top);
       @include a.text-style-heading-lg;
       text-align: right;
       @include a.hollow-text;
+      animation: moveIn 2s;
+      animation-timing-function: 1s ease;
       transition: transform var(--t-speed) ease;
       &:hover {
         transform: translateY(-0.8rem);
@@ -156,6 +170,7 @@ header {
   &__image {
     border-radius: 4rem;
     overflow: hidden;
+
     @include a.for-tablet-up {
       grid-column: 2/4;
       grid-row: 1/2;
@@ -706,5 +721,38 @@ footer {
   &:hover:before {
     background-position: 100% 100%;
     transform: scale(1.08, 1.03);
+  }
+}
+
+@keyframes moveIn {
+  0% {
+    opacity: 0;
+    transform: translateX(-5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(5rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0rem);
+  }
+}
+
+@keyframes quickLift {
+  0% {
+    transform: rotateX("10%");
+  }
+  100% {
+    transform: rotateX("0%");
   }
 }
